@@ -6,6 +6,7 @@ from flask import render_template
 from workspace import get_matchid
 from workspace import get_match_stats
 from workspace import get_bait_pings
+from workspace import get_players
 app = Flask(__name__)
 
 @app.route('/')
@@ -63,13 +64,27 @@ def match1():
         matchid=value
     #print(matchid)
     matchdata = get_match_stats(matchid)
-    baitpings = get_bait_pings(matchdata)
+    players = get_players(matchdata)
+    player1 = str(players[0][0])
+    player2 = players[1][0]
+    player3 = players[2][0]
+    player4 = players[3][0]
+    player5 = players[4][0]
+    player6 = players[5][0]
+    player7 = players[6][0]
+    player8 = players[7][0]
+    player9 = players[8][0]
+    player10 = players[9][0]
 
-    return render_template('match1.html', baitpings = baitpings)
+    return render_template('matchplayers.html', player1 = player1, player2 = player2, player3 = player3, player4 = player4, player5 = player5,
+    player6= player6, player7= player7, player8= player8, player9 = player9, player10 =player10, matchid = matchid)
     #matchid = 
 
-
-
+@app.route('/playerstats', methods =['POST'])
+def matchstats():
+    form_data = request.form
+    print(form_data)
+    return render_template('playerstats.html')
 
 if __name__ == '__main__':
     app.run(debug=True)    

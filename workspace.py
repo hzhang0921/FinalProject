@@ -42,7 +42,12 @@ def get_bait_pings(matchdata):
     for i in range(len(matchdata['info']['participants'])):
         playerdict[matchdata['info']['participants'][i]['summonerName']] = matchdata['info']['participants'][i]['baitPings']
     return(playerdict)
-#get 
+
+def get_players(matchdata):
+    playerlist = []
+    for i in range(len(matchdata['info']['participants'])):
+        playerlist.append([matchdata['info']['participants'][i]['summonerName']])
+    return playerlist
 
 def full_stats(summonername,tagline):
     puuid = get_puuid(summonername,tagline)
