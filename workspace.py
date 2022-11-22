@@ -19,23 +19,47 @@ def get_matchid(puuid):
     with urllib.request.urlopen(url) as f:
         repsonse_text = f.read().decode('utf-8')
         data = json.loads(repsonse_text)
-    pprint.pprint(data)
-    return data[0]
+    #pprint.pprint(data)
+    return data
 
 def get_match_stats(match_id):
     url = 'https://americas.api.riotgames.com/lol/match/v5/matches/' + match_id + '?api_key=' + RIOTAPI
     with urllib.request.urlopen(url) as f:
         repsonse_text = f.read().decode('utf-8')
         data = json.loads(repsonse_text)
-    pprint.pprint(data)
+    #pprint.pprint(data)
+    return data
+
+def get_kills(matchdata):
+    playerdict = {}
+    for i in range(len(matchdata['info']['participants'])):
+        playerdict[matchdata['info']['participants'][i]['summonerName']] = matchdata['info']['participants'][i]['kills']
+    return(playerdict)
     
+
+def get_bait_pings(matchdata):
+    playerdict = {}
+    for i in range(len(matchdata['info']['participants'])):
+        playerdict[matchdata['info']['participants'][i]['summonerName']] = matchdata['info']['participants'][i]['baitPings']
+    return(playerdict)
+#get 
+
+def full_stats(summonername,tagline):
+    puuid = get_puuid(summonername,tagline)
+    match1 = get_matchid(puuid)[0]
+    matchstats = get_match_stats(match1)
+    kills = get_kills(matchstats)
+    return kills
+
+
 def main():
     
    # get_puuid('SchtankyLeg','PANTS')
     #get_matchid(get_puuid('SchtankyLeg','PANTS'))
-    get_match_stats(get_matchid(get_puuid('QuickPlatinum','NA1')))
-
-
+    #get_match_stats(get_matchid(get_puuid('QuickPlatinum','NA1'))[0])
+    print(get_puuid('QuickPlatinum','NA1'))
+    #get_kills(get_match_stats(get_matchid(get_puuid('QuickPlatinum','NA1'))[0]))
+    pass
 
 if __name__== '__main__':
     print(main())
