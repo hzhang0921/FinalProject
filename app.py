@@ -7,6 +7,7 @@ from workspace import get_matchid
 from workspace import get_match_stats
 from workspace import get_bait_pings
 from workspace import get_players
+from workspace import get_player_stats
 app = Flask(__name__)
 
 @app.route('/')
@@ -83,8 +84,14 @@ def match1():
 @app.route('/playerstats', methods =['POST'])
 def matchstats():
     form_data = request.form
-    print(form_data)
-    return render_template('playerstats.html')
+    for value in form_data:
+        placeholder = value
+    newlist = placeholder.split(',')
+    matchid = newlist[0]
+    summonername =newlist[1]
+    matchdata = get_match_stats(matchid)
+    baitpings = get_player_stats(matchdata,summonername)
+    return render_template('playerstats.html', baitpings=baitpings,summonername=summonername)
 
 if __name__ == '__main__':
     app.run(debug=True)    
