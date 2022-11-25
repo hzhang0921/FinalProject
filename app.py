@@ -8,6 +8,8 @@ from workspace import get_match_stats
 from workspace import get_bait_pings
 from workspace import get_players
 from workspace import get_player_stats
+from workspace import get_player_deaths
+from workspace import get_player_kills
 app = Flask(__name__)
 
 @app.route('/')
@@ -91,7 +93,9 @@ def matchstats():
     summonername =newlist[1]
     matchdata = get_match_stats(matchid)
     baitpings = get_player_stats(matchdata,summonername)
-    return render_template('playerstats.html', baitpings=baitpings,summonername=summonername)
+    kills = get_player_kills(matchdata,summonername)
+    deaths = get_player_deaths(matchdata,summonername)
+    return render_template('playerstats.html', baitpings=baitpings,summonername=summonername,kills=kills,deaths=deaths)
 
 if __name__ == '__main__':
     app.run(debug=True)    

@@ -52,11 +52,20 @@ def get_players(matchdata):
 def get_player_stats(matchdata, summonername):
     for i in range(len(matchdata['info']['participants'])):
         if matchdata['info']['participants'][i]['summonerName']==summonername:
-            print(i)
             index = int(i)
-    print("index")
-    print(index)
     return matchdata['info']['participants'][index]['baitPings']
+
+def get_player_kills(matchdata, summonername):
+    for i in range(len(matchdata['info']['participants'])):
+        if matchdata['info']['participants'][i]['summonerName']==summonername:
+            index = int(i)
+    return matchdata['info']['participants'][index]['kills']
+
+def get_player_deaths(matchdata, summonername):
+    for i in range(len(matchdata['info']['participants'])):
+        if matchdata['info']['participants'][i]['summonerName']==summonername:
+            index = int(i)
+    return matchdata['info']['participants'][index]['deaths']
 
 def full_stats(summonername,tagline):
     puuid = get_puuid(summonername,tagline)
@@ -70,9 +79,9 @@ def main():
     
    # get_puuid('SchtankyLeg','PANTS')
     #get_matchid(get_puuid('SchtankyLeg','PANTS'))
-    match = get_match_stats(get_matchid(get_puuid('QuickPlatinum','NA1'))[0])
+    #match = get_match_stats(get_matchid(get_puuid('QuickPlatinum','NA1'))[0])
     #print(get_puuid('QuickPlatinum','NA1'))
-    print(get_player_stats(match,'QuickPlatinum'))
+    #print(get_player_stats(match,'QuickPlatinum'))
     #get_kills(get_match_stats(get_matchid(get_puuid('QuickPlatinum','NA1'))[0]))
     pass
 
