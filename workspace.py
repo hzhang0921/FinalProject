@@ -67,6 +67,85 @@ def get_player_deaths(matchdata, summonername):
             index = int(i)
     return matchdata['info']['participants'][index]['deaths']
 
+def get_player_assists(matchdata, summonername):
+    for i in range(len(matchdata['info']['participants'])):
+        if matchdata['info']['participants'][i]['summonerName']==summonername:
+            index = int(i)
+    return matchdata['info']['participants'][index]['assists']
+
+def get_player_visionScore(matchdata, summonername):
+    for i in range(len(matchdata['info']['participants'])):
+        if matchdata['info']['participants'][i]['summonerName']==summonername:
+            index = int(i)
+    return matchdata['info']['participants'][index]['visionScore']
+
+def get_player_teamPosition(matchdata, summonername):
+    for i in range(len(matchdata['info']['participants'])):
+        if matchdata['info']['participants'][i]['summonerName']==summonername:
+            index = int(i)
+    return matchdata['info']['participants'][index]['teamPosition']
+
+def get_player_totaldamage(matchdata, summonername):
+    for i in range(len(matchdata['info']['participants'])):
+        if matchdata['info']['participants'][i]['summonerName']==summonername:
+            index = int(i)
+    return matchdata['info']['participants'][index]['totalDamageDealt']
+
+def get_player_championName(matchdata, summonername):
+    for i in range(len(matchdata['info']['participants'])):
+        if matchdata['info']['participants'][i]['summonerName']==summonername:
+            index = int(i)
+    return matchdata['info']['participants'][index]['championName']
+
+def get_player_ObejctiveDamage(matchdata, summonername):
+    for i in range(len(matchdata['info']['participants'])):
+        if matchdata['info']['participants'][i]['summonerName']==summonername:
+            index = int(i)
+    return matchdata['info']['participants'][index]['damageDealtToObjectives']
+
+def get_player_TurretDamage(matchdata, summonername):
+    for i in range(len(matchdata['info']['participants'])):
+        if matchdata['info']['participants'][i]['summonerName']==summonername:
+            index = int(i)
+    return matchdata['info']['participants'][index]['damageDealtToTurrets']
+
+def get_player_goldEarned(matchdata, summonername):
+    for i in range(len(matchdata['info']['participants'])):
+        if matchdata['info']['participants'][i]['summonerName']==summonername:
+            index = int(i)
+    return matchdata['info']['participants'][index]['goldEarned']
+
+def get_player_pinkWards(matchdata, summonername):
+    for i in range(len(matchdata['info']['participants'])):
+        if matchdata['info']['participants'][i]['summonerName']==summonername:
+            index = int(i)
+    return matchdata['info']['participants'][index]['sightWardsBoughtInGame']
+
+def get_player_TotalDamagetoChampions(matchdata, summonername):
+    for i in range(len(matchdata['info']['participants'])):
+        if matchdata['info']['participants'][i]['summonerName']==summonername:
+            index = int(i)
+    return matchdata['info']['participants'][index]['totalDamageDealtToChampions']
+
+def get_player_CreepScore(matchdata, summonername):
+    for i in range(len(matchdata['info']['participants'])):
+        if matchdata['info']['participants'][i]['summonerName']==summonername:
+            index = int(i)
+    return matchdata['info']['participants'][index]['totalMinionsKilled']
+
+def get_player_timeSpentDead(matchdata, summonername):
+    for i in range(len(matchdata['info']['participants'])):
+        if matchdata['info']['participants'][i]['summonerName']==summonername:
+            index = int(i)
+    return matchdata['info']['participants'][index]['totalTimeSpentDead']
+
+def get_player_turretTakedowns(matchdata, summonername):
+    for i in range(len(matchdata['info']['participants'])):
+        if matchdata['info']['participants'][i]['summonerName']==summonername:
+            index = int(i)
+    return matchdata['info']['participants'][index]['turretTakedowns']
+
+
 def full_stats(summonername,tagline):
     puuid = get_puuid(summonername,tagline)
     match1 = get_matchid(puuid)[0]
@@ -79,7 +158,7 @@ def main():
     
    # get_puuid('SchtankyLeg','PANTS')
     #get_matchid(get_puuid('SchtankyLeg','PANTS'))
-    #match = get_match_stats(get_matchid(get_puuid('QuickPlatinum','NA1'))[0])
+    print(get_match_stats(get_matchid(get_puuid('QuickPlatinum','NA1'))[0]))
     #print(get_puuid('QuickPlatinum','NA1'))
     #print(get_player_stats(match,'QuickPlatinum'))
     #get_kills(get_match_stats(get_matchid(get_puuid('QuickPlatinum','NA1'))[0]))

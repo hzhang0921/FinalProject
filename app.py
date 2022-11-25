@@ -5,11 +5,26 @@ from flask import request
 from flask import render_template
 from workspace import get_matchid
 from workspace import get_match_stats
-from workspace import get_bait_pings
+from workspace import get_player_baitPings
 from workspace import get_players
 from workspace import get_player_stats
 from workspace import get_player_deaths
 from workspace import get_player_kills
+from workspace import get_player_assists
+from workspace import get_player_visionScore
+from workspace import get_player_teamPosition
+from workspace import get_player_totaldamage
+from workspace import get_player_championName
+from workspace import get_player_ObejctiveDamage
+from workspace import get_player_TurretDamage
+from workspace import get_player_goldEarned
+from workspace import get_player_pinkWards
+from workspace import get_player_TotalDamagetoChampions
+from workspace import get_player_CreepScore
+from workspace import get_player_timeSpentDead
+from workspace import get_player_turretTakedowns
+
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -95,7 +110,26 @@ def matchstats():
     baitpings = get_player_stats(matchdata,summonername)
     kills = get_player_kills(matchdata,summonername)
     deaths = get_player_deaths(matchdata,summonername)
-    return render_template('playerstats.html', baitpings=baitpings,summonername=summonername,kills=kills,deaths=deaths)
+    assists = get_player_assists(matchdata,summonername)
+    visionScore = get_player_visionScore(matchdata,summonername)
+    teamPosition = get_player_teamPosition(matchdata,summonername)
+    totaldamage = get_player_totaldamage(matchdata,summonername)
+    championName = get_player_championName(matchdata,summonername)
+    ObjectiveDamage = get_player_ObejctiveDamage(matchdata,summonername)
+    TurretDamage = get_player_TurretDamage(matchdata,summonername)
+    goldEarned = get_player_goldEarned(matchdata,summonername)
+    pinkWards = get_player_pinkWards(matchdata,summonername)
+    TotalDamagetoChampions = get_player_TotalDamagetoChampions(matchdata,summonername)
+    CreepScore = get_player_CreepScore(matchdata,summonername)
+    timeSpentDead = get_player_timeSpentDead(matchdata,summonername)
+    turretTakedowns = get_player_turretTakedowns(matchdata,summonername)
+    baitPings = get_player_baitPings(matchdata,summonername)
+
+
+
+    return render_template('playerstats.html', baitpings=baitpings,summonername=summonername,kills=kills,deaths=deaths, assists=assists, visionScore=visionScore, 
+        teamPosition =teamPosition, totaldamage= totaldamage, championName= championName, ObjectiveDamage = ObjectiveDamage, TurretDamage = TurretDamage, goldEarned = goldEarned,
+        pinkWards=pinkWards, TotalDamagetoChampions = TotalDamagetoChampions, CreepScore= CreepScore, timeSpentDead = timeSpentDead, turretTakedowns = turretTakedowns, baitPings=baitPings)
 
 if __name__ == '__main__':
     app.run(debug=True)    

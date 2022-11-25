@@ -2,6 +2,8 @@
 <h2> {{ 'Please enter your Summoner Name and your Tagline below!' }} </h2>
 <p> {{baitpings}}</p>
 
+<h2> Ally Team</h2>
+
 <form action="/playerstats" method="POST">
     <p> Summoner Name: {{player1}}</p>
     <input type="submit" name="{{matchid}},{{player1}}" value="See Stats"><br>
@@ -26,6 +28,8 @@
     <p> Summoner Name: {{player5}}</p>
     <input type="submit" name="{{matchid}},{{player5}}" value="See Stats"><br>
 </form>
+
+<h2> Enemy Team</h2>
 
 <form action="/playerstats" method="POST">
     <p> Summoner Name: {{player6}}</p>
