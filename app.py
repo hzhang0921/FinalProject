@@ -7,7 +7,6 @@ from workspace import get_matchid
 from workspace import get_match_stats
 from workspace import get_player_baitPings
 from workspace import get_players
-from workspace import get_player_stats
 from workspace import get_player_deaths
 from workspace import get_player_kills
 from workspace import get_player_assists
@@ -44,33 +43,29 @@ def matchpage():
     #return render_template('matchpage.html')
         #access the balues from the form
     # for value in form_data.values():
-    summonername = form_data.getlist('Summoner Name')[0]
-    tagline = form_data.getlist('Tagline')[0]
-    puuid = get_puuid(summonername,tagline)
-    #return the template locaiton.html, send in variable sstop and wheelchair
-    match_id = get_matchid(puuid)
-    print(match_id)
-    match1 = match_id[0]
-    match2 = match_id[1]
-    match3 = match_id[2]
-    match4 = match_id[3]
-    match5 = match_id[4]
-    return render_template('matchpage.html', match1= match1, match2=match2, match3=match3, match4=match4, match5 =match5 )
-    # try:
-    #     #use the function find_stop_near from mbta_helper.py to find the MBTA stop from the value obtained from the form
-    #     # stats = full_stats(value)
-    #     #split the MBTA stop and wheelchair accessibility into distinct bariables
-    #     summonername = form_data.getlist('Summoner Name')[0]
-    #     tagline = form_data.getlist('Tagline')[0]
-    #     #return the template locaiton.html, send in variable sstop and wheelchair
-    #     match_id = get_matchid(summonername,tagline)
-    #     print(match_id)
-    #     return render_template('matchpage.html', summonername=summonername, tagline = tagline )
+    
+    try:
+        summonername = form_data.getlist('Summoner Name')[0]
+        tagline = form_data.getlist('Tagline')[0]
+        puuid = get_puuid(summonername,tagline)
+        #return the template locaiton.html, send in variable sstop and wheelchair
+        match_id = get_matchid(puuid)
+        print(match_id)
+        match1 = match_id[0]
+        match2 = match_id[1]
+        match3 = match_id[2]
+        match4 = match_id[3]
+        match5 = match_id[4]
+        return render_template('matchpage.html', match1= match1, match2=match2, match3=match3, match4=match4, match5 =match5 )
+ 
     # #in the case an error occurs
-    # except (IndexError,TypeError):
+    except (IndexError,TypeError):
     #     #if an index or type error occurs, redirect the user to /error, showing the error.html template
-    #     return redirect(('/error'))
+         return redirect(('/error'))
 
+@app.route('/error')
+def error():
+    return render_template('error.html')
 
 @app.route('/match1', methods = ["POST"])
 def match1():
@@ -107,7 +102,7 @@ def matchstats():
     matchid = newlist[0]
     summonername =newlist[1]
     matchdata = get_match_stats(matchid)
-    baitpings = get_player_stats(matchdata,summonername)
+    baitpings = get_player_baitPings(matchdata,summonername)
     kills = get_player_kills(matchdata,summonername)
     deaths = get_player_deaths(matchdata,summonername)
     assists = get_player_assists(matchdata,summonername)

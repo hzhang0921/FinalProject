@@ -35,13 +35,6 @@ def get_kills(matchdata):
     for i in range(len(matchdata['info']['participants'])):
         playerdict[matchdata['info']['participants'][i]['summonerName']] = matchdata['info']['participants'][i]['kills']
     return(playerdict)
-    
-
-def get_bait_pings(matchdata):
-    playerdict = {}
-    for i in range(len(matchdata['info']['participants'])):
-        playerdict[matchdata['info']['participants'][i]['summonerName']] = matchdata['info']['participants'][i]['baitPings']
-    return(playerdict)
 
 def get_players(matchdata):
     playerlist = []
@@ -49,16 +42,18 @@ def get_players(matchdata):
         playerlist.append([matchdata['info']['participants'][i]['summonerName']])
     return playerlist
 
-def get_player_stats(matchdata, summonername):
+def get_player_baitPings(matchdata, summonername):
     for i in range(len(matchdata['info']['participants'])):
         if matchdata['info']['participants'][i]['summonerName']==summonername:
             index = int(i)
     return matchdata['info']['participants'][index]['baitPings']
 
 def get_player_kills(matchdata, summonername):
+    #print(range(len(matchdata['info']['participants'])))
     for i in range(len(matchdata['info']['participants'])):
         if matchdata['info']['participants'][i]['summonerName']==summonername:
             index = int(i)
+            print(index)
     return matchdata['info']['participants'][index]['kills']
 
 def get_player_deaths(matchdata, summonername):
@@ -158,8 +153,19 @@ def main():
     
    # get_puuid('SchtankyLeg','PANTS')
     #get_matchid(get_puuid('SchtankyLeg','PANTS'))
-    print(get_match_stats(get_matchid(get_puuid('QuickPlatinum','NA1'))[0]))
+    x= (get_match_stats(get_matchid(get_puuid('QuickPlatinum','NA1'))[0]))
+    print(len(x['info']['participants']))
+    print (x['info']['participants'][0]['baitPings'])
+    for i in range(len(x['info']['participants'])):
+        if x['info']['participants'][i]['summonerName']=="QuickPlatinum":
+            index = int(i)
+            print(index)
+    print(x['info']['participants'][index]['baitPings'])
+
+    print(get_player_championName('QuickPlatinum', 'NA1_4504131447'))
+    #print(get_player_baitPings(get_match_stats(get_matchid(get_puuid('QuickPlatinum','NA1'))[0])))
     #print(get_puuid('QuickPlatinum','NA1'))
+   # print(get_player_kills("QuickPlatinum", 'NA1_4504131447'))
     #print(get_player_stats(match,'QuickPlatinum'))
     #get_kills(get_match_stats(get_matchid(get_puuid('QuickPlatinum','NA1'))[0]))
     pass
