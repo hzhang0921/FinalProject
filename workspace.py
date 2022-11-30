@@ -2,7 +2,9 @@ import urllib.request
 import json
 import pprint
 from config import RIOTAPI
+import ssl
 
+ssl._create_default_https_context = ssl._create_unverified_context
 
 
 def get_puuid(username,tagline):
@@ -153,19 +155,19 @@ def main():
     
    # get_puuid('SchtankyLeg','PANTS')
     #get_matchid(get_puuid('SchtankyLeg','PANTS'))
-    x= (get_match_stats(get_matchid(get_puuid('QuickPlatinum','NA1'))[0]))
-    print(len(x['info']['participants']))
-    print (x['info']['participants'][0]['baitPings'])
-    for i in range(len(x['info']['participants'])):
-        if x['info']['participants'][i]['summonerName']=="QuickPlatinum":
-            index = int(i)
-            print(index)
-    print(x['info']['participants'][index]['baitPings'])
+    # x= (get_match_stats(get_matchid(get_puuid('QuickPlatinum','NA1'))[0]))
+    # print(len(x['info']['participants']))
+    # print (x['info']['participants'][0]['baitPings'])
+    # for i in range(len(x['info']['participants'])):
+    #     if x['info']['participants'][i]['summonerName']=="QuickPlatinum":
+    #         index = int(i)
+    #         print(index)
+    # print(x['info']['participants'][index]['baitPings'])
 
-    print(get_player_championName('QuickPlatinum', 'NA1_4504131447'))
+    # print(get_player_championName('QuickPlatinum', 'NA1_4504131447'))
     #print(get_player_baitPings(get_match_stats(get_matchid(get_puuid('QuickPlatinum','NA1'))[0])))
     #print(get_puuid('QuickPlatinum','NA1'))
-   # print(get_player_kills("QuickPlatinum", 'NA1_4504131447'))
+    print(get_player_kills("QuickPlatinum", 'NA1_4504131447'))
     #print(get_player_stats(match,'QuickPlatinum'))
     #get_kills(get_match_stats(get_matchid(get_puuid('QuickPlatinum','NA1'))[0]))
     pass
