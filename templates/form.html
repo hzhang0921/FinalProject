@@ -1,7 +1,9 @@
-<h1> {{ 'Hello!' }} </h1>
+<!-- Greet the User. Advise them how to use the program properly.-->
+<h1> {{ 'Hello! Welcome to League of Legends Game Tracker!' }} </h1>
+<h2> This app displays the stats of all players in your last five games!</h2>
 <h2> {{ 'Please enter your Summoner Name and your Tagline below!' }} </h2>
-
-<form action="/matchpage/" method = "POST">
+<!-- Ask use for their summoner name and tagline through text input, return this information with a submit button-->
+<form action="/matchpage/" method="POST">
     <label for="Summoner Name"> Summoner Name:</label><br>
     <input type="text" id="Summoner Name" name="Summoner Name"><br>
     <label for="Tagline"> Tagline:</label><br>

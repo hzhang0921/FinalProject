@@ -1,9 +1,8 @@
-<h1> {{ 'Hello!' }} </h1>
-<h2> {{ 'Please enter your Summoner Name and your Tagline below!' }} </h2>
-<p> {{baitpings}}</p>
-
+<!-- Describe the page -->
+<h1> {{ 'Each Player is Displayed Below. Click the Button to see Their Stats!' }} </h1>
+<!-- Indicate Ally Team-->
 <h2> Ally Team</h2>
-
+<!-- send user to playerstats app route, send in variables match id and player name for each player in the game-->
 <form action="/playerstats" method="POST">
     <p> Summoner Name: {{player1}}</p>
     <input type="submit" name="{{matchid}},{{player1}}" value="See Stats"><br>
@@ -28,7 +27,8 @@
     <p> Summoner Name: {{player5}}</p>
     <input type="submit" name="{{matchid}},{{player5}}" value="See Stats"><br>
 </form>
-
+<!-- Indicate Enemy Team-->
+<!-- send user to playerstats app route, send in variables match id and player name for each player in the game-->
 <h2> Enemy Team</h2>
 
 <form action="/playerstats" method="POST">
@@ -54,4 +54,11 @@
 <form action="/playerstats" method="POST">
     <p> Summoner Name: {{player10}}</p>
     <input type="submit" name="{{matchid}},{{player10}}" value="See Stats"><br>
+</form>
+<!-- Indicate new setion-->
+<h2> Return To Home</h2>
+<!-- Giver user option to return to the index page using button-->
+<form action="/">
+    <p> Find the Games of a Different Summoner! </p>
+    <button> Return to Home Page </button>
 </form>

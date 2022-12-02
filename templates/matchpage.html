@@ -1,6 +1,6 @@
-<h1> {{ 'Hello!' }} </h1>
-<h2> {{ 'Your matches are below.' }} </h2>
-
+<!-- Tele the Use that their match history is being displayed-->
+<h2> {{ 'Your last five matches are shown below.' }} </h2>
+<!-- Provide 5 buttons indicating which match is which based on match id. Send match id through post using input type submit. Send user to match1 approute-->
 <form action="/match1" method="POST">
     <p> The Match ID is {{match1}}</p>
     <input type="submit" name={{match1}} value= "See Your Stats for Your Most Recent Match"><br>
@@ -23,4 +23,12 @@
 <form action="/match1" method="POST">
     <p> The Match ID is {{match5}}</p>
     <input type="submit" name={{match5}} value="See Your Stats for Your Fifth Most Recent Match"><br>
+</form>
+
+<!-- indicate that this next section is separate-->
+<h2> Return To Home</h2>
+<!-- send user back to index page using a button-->
+<form action="/">
+    <p> Find the Games of a Different Summoner! </p>
+    <button> Return to Home Page </button>
 </form>
