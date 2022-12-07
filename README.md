@@ -15,4 +15,4 @@ Next, you can choose which player in your game that you want to analyze further.
 6. Enjoy!!!
 
 ## Project Website
-link : 
+link : https://sites.google.com/babson.edu/lol-stat-tracker
