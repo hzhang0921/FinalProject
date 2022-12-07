@@ -7,7 +7,7 @@ Next, you can choose which player in your game that you want to analyze further.
 
 ## Instructions
 1. Update the API in config.py with your personal RIOT API Key
-a. Know that the Riot API requires a reset every 24 hours. You must change your API key in the program respectively.
+1a. Know that the Riot API requires a reset every 24 hours. You must change your API key in the program respectively.
 2. Install packages : flask, urllib.request, json, ssl, requests
 3. Run workspace.py and app.py
 4. Open web app at "Running on http://127.0.0.1:5000"
