@@ -1,3 +1,5 @@
+RIOT Live Game Data tracker
+by Tyler Kero and Haoyang Zhang
 # FinalProject
 
 ## Brief Desciption
